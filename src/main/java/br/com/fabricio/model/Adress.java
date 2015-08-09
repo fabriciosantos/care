@@ -27,6 +27,9 @@ public class Adress {
 
 	@Column(name = "city", length = 50)
 	private String city;
+	
+	@Column(name = "state", length = 50)
+	public String state;
 
 	public Integer getIdAdress() {
 		return idAdress;
@@ -68,4 +71,13 @@ public class Adress {
 		this.city = city;
 	}
 
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	
 }
