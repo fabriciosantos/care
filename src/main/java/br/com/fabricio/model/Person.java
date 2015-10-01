@@ -10,23 +10,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Target;
 
 
 @SuppressWarnings("unused")
 @Entity
 @Table(name = "person", catalog = "care")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Person {
+public abstract class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idPerson", unique = true, nullable = false)
 	private Integer id;
 
+	private BlackList blackList;
+	
 	@Column(name = "name", length = 100)
 	private String name;
 
@@ -35,24 +41,26 @@ public class Person {
 
 	@Column(name = "dateOfBirth")
 	private Date dateOfBirth;
+
+	@OneToMany(fetch = FetchType.EAGER)
+	private Address address;
+	
 	
 	@OneToMany(fetch = FetchType.EAGER)
-	private Adress adress;
-
-	@OneToMany(fetch = FetchType.EAGER)
 	private Phone phone;
-
+	
+	
 	@Column(name = "login")
 	private String login;
 
 	@Column(name = "password")
 	private String password;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Vacancy vacancy;
-
 	@Column(name = "enable")
 	private boolean enable;
+	
+	public Person() {
+	}
 
 	public Integer getId() {
 		return id;
@@ -85,13 +93,13 @@ public class Person {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
-	public Adress getAdress() {
-		return adress;
+	
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdress(Adress adress) {
-		this.adress = adress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public Phone getPhone() {
@@ -118,14 +126,6 @@ public class Person {
 		this.password = password;
 	}
 
-	public Vacancy getVacancy() {
-		return vacancy;
-	}
-
-	public void setVacancy(Vacancy vacancy) {
-		this.vacancy = vacancy;
-	}
-
 	public boolean isEnable() {
 		return enable;
 	}
@@ -133,5 +133,15 @@ public class Person {
 	public void setEnable(boolean enable) {
 		this.enable = enable;
 	}
+
+	public BlackList getBlackList() {
+		return blackList;
+	}
+
+	public void setBlackList(BlackList blackList) {
+		this.blackList = blackList;
+	}
+	
+	
 
 }

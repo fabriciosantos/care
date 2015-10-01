@@ -5,31 +5,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "person_physical", catalog = "care")
+@PrimaryKeyJoinColumn(name = "idPerson")
 public class PersonPhysical extends Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "idPersonPhusical", unique = true, nullable = false)
-	private Integer id;
-
+	@Column(name = "idPersonPhysical", unique = true, nullable = false)
+	private int idPersonPhysical;
+	
 	@Column(name = "cpf", length = 11)
 	private String cpf;
 
 	@Column(name = "rg", length = 9)
 	private String rg;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
+	private BlackList blackList;
+		
 	public String getCpf() {
 		return cpf;
 	}
@@ -46,4 +42,13 @@ public class PersonPhysical extends Person {
 		this.rg = rg;
 	}
 
+	public BlackList getBlackList() {
+		return blackList;
+	}
+
+	public void setBlackList(BlackList blackList) {
+		this.blackList = blackList;
+	}
+
+	
 }

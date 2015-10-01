@@ -1,0 +1,145 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600);
+
+$blue: #3e52b3;
+
+::selection {
+  background: rgba($blue, 0.3);
+}
+
+::-moz-selection {
+  background: rgba($blue, 0.3);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  background: $blue;
+  font-size: 18px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  width: 350px;
+  
+  header {
+    text-align: center;
+    margin-bottom: 2em;
+  }
+}
+
+.hideBlock {
+  position: relative;
+  z-index: 0;
+}
+
+.expandable-input {
+  width: 90%;
+  margin: 0 auto;
+  height: 5em;
+  position: relative;
+  cursor: pointer;
+  
+  & + .expandable-input {
+    margin-top: 1em;
+  }
+  
+  &.collapsed {
+    
+  }
+  
+  > .expandable-input--input {
+    cursor: pointer;
+  }
+  
+  > i {
+    position: absolute;
+    font-size: 24px;
+    top: 26px;
+    left: 16px;
+    opacity: 1;
+    color: rgba(black, 0.3);
+    z-index: 2;
+  }
+}
+
+.expandable-input--label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.expandable-input--input {
+  position: absolute;
+  top: 1em;
+  left: 0;
+  display: block;
+  width: 100%;
+  font: inherit;
+  border-radius: 5px;
+  border: none;
+  padding: 12px 12px 12px 48px;
+  box-shadow: rgba(black, 0.4) 0 4px 8px;
+  transform-origin: bottom left;
+  color: rgba(black, 0.75);
+}
+
+.forgot {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  text-align: right;
+  text-decoration: none;
+  color: rgba(black, 0.4);
+}
+
+.btn-block {
+  outline: none;
+  display: block;
+  font: inherit;
+  color: inherit;
+  background: darken($blue, 5);
+  border: none;
+  padding: 1em;
+  width: 100%;
+  cursor: pointer;
+  transform-origin: bottom center;
+  position: relative;
+  z-index: 2;
+  &:hover {
+    background: darken($blue, 8);
+  }
+}
+
+.mt-1 {
+  margin-top: 1em;
+}
+
+.yolo {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  i {
+    display: none;
+    opacity: 0;
+    font-size: 36px;
+  }
+  
+  class ExpandableInput extends React.Component {
+  
+  constructor (props) {
+    super(props);
+    this.state = {
+      expanded: false
+    };
+  }
+  
+ 
+}

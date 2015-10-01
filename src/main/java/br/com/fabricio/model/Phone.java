@@ -2,10 +2,14 @@ package br.com.fabricio.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Target;
 
 @Entity
 @Table(name = "phone", catalog = "care")
@@ -16,6 +20,10 @@ public class Phone {
 	@Column(name = "idPhone", unique = true, nullable = false)
 	private Integer idPhone;
 
+	//@ManyToOne(fetch = FetchType.EAGER)
+	//@Target(value = Person.class)
+	//private Person person;
+	
 	@Column(name = "number", length = 11)
 	private String number;
 

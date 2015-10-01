@@ -2,20 +2,28 @@ package br.com.fabricio.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Target;
 
 @Entity
 @Table(name = "adress", catalog = "care")
-public class Adress {
+public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idAdress", unique = true, nullable = false)
 	private Integer idAdress;
 
+	/*@ManyToOne(fetch = FetchType.EAGER)
+	@Target(value = Person.class)
+	private Person person;*/
+	
 	@Column(name = "street", length = 100)
 	private String street;
 

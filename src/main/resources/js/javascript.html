@@ -1,0 +1,84 @@
+class ExpandableInput extends React.Component {
+  
+  constructor (props) {
+    super(props);
+    this.state = {
+      expanded: false
+    };
+  }
+  
+  handleClick () {
+    if (this.state.expanded) { return; }
+    this.setState({ expanded: true });
+    TweenMax.to(React.findDOMNode(this.refs.label), 0.25, { y: 0, fontSize: 12 });
+    TweenMax.to(React.findDOMNode(this.refs.input), 0.25, { scaleY: 1 });
+    TweenMax.to(React.findDOMNode(this.refs.icon), 0.25, { opacity: 1, y: 0 });
+    setTimeout(this.focusInput.bind(this), 0.25);
+  }
+  
+  focusInput () {
+    React.findDOMNode(this.refs.input).focus();
+  }
+  
+  componentDidMount () {
+    TweenMax.set(React.findDOMNode(this.refs.label), { y: 30 });
+    TweenMax.set(React.findDOMNode(this.refs.icon), { opacity: 0, y: 20 });
+    TweenMax.set(React.findDOMNode(this.refs.input), { scaleY: 0.1 });
+  }
+  
+  render () {
+    return (
+      <div className='expandable-input' onClick={this.handleClick.bind(this)} onFocus={this.handleClick.bind(this)}>
+        <div ref='label' className='expandable-input--label'>
+          {this.props.label}
+        </div>
+        <i className={this.props.icon} ref='icon' />
+        <input type={this.props.inputType}
+               ref='input'
+               className='expandable-input--input'/>
+      </div>
+    );
+  }
+  
+}
+
+class Login extends React.Component {
+  
+  constructor () {
+    super();
+    this.state = {
+      submitted: false
+    };
+  }
+  
+  submit () {
+    if (this.state.submitted) { return; }
+    this.setState({ submitted: true });
+    let check = React.findDOMNode(this.refs.yolo);
+    TweenMax.set(check, { display: 'block', y: 30 });
+    new TimelineMax()
+      .to(React.findDOMNode(this.refs.btnText), 0.5, { opacity: 0 })
+      .to(React.findDOMNode(this.refs.btn), 0.25, { scaleY: 6 })
+      .to(check, 0.25, { y: 0, opacity: 1, ease: 'Back.easeOut' });
+  }
+  
+  render () {
+    return (
+      <div className='login-container'>
+        <div className='yolo'>
+          <i className='ion-checkmark' ref='yolo'/>
+        </div>
+        <header>Sign in</header>
+        <ExpandableInput inputType='email' label='Email ID' icon='ion-android-mail' />
+        <ExpandableInput inputType='password' label='Password' icon='ion-android-lock' />
+        <a href='#' className='forgot'>Forgot password?</a>
+        <button className='btn-block mt-1' onClick={this.submit.bind(this)} ref='btn'>
+          <span ref='btnText'>Login</span>
+        </button>
+      </div>
+    );
+  }
+  
+}
+
+React.render(<Login />, document.body);
