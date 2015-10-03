@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "personLegal", catalog = "care")
-@PrimaryKeyJoinColumn(name = "idPerson")
+@PrimaryKeyJoinColumn(name = "id_Person")
 public class PersonLegal extends Person {
 	
 	@Id
@@ -23,8 +23,6 @@ public class PersonLegal extends Person {
 
 	@Column(name = "inscricaoEstadual")
 	private String ie;
-
-	private BlackList blackList;
 	
 	public String getCnpj() {
 		return cnpj;
@@ -41,15 +39,4 @@ public class PersonLegal extends Person {
 	public void setIe(String ie) {
 		this.ie = ie;
 	}
-
-	public BlackList getBlackList() {
-		return blackList;
-	}
-
-	public void setBlackList(BlackList blackList) {
-		this.blackList = blackList;
-	}
-
-	
-	
 }

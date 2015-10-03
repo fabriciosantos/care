@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "person_physical", catalog = "care")
-@PrimaryKeyJoinColumn(name = "idPerson")
+@PrimaryKeyJoinColumn(name = "id_Person")
 public class PersonPhysical extends Person {
 
 	@Id
@@ -24,8 +24,6 @@ public class PersonPhysical extends Person {
 	@Column(name = "rg", length = 9)
 	private String rg;
 
-	private BlackList blackList;
-		
 	public String getCpf() {
 		return cpf;
 	}
@@ -41,14 +39,4 @@ public class PersonPhysical extends Person {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-
-	public BlackList getBlackList() {
-		return blackList;
-	}
-
-	public void setBlackList(BlackList blackList) {
-		this.blackList = blackList;
-	}
-
-	
 }

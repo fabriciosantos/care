@@ -30,8 +30,6 @@ public abstract class Person {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idPerson", unique = true, nullable = false)
 	private Integer id;
-
-	private BlackList blackList;
 	
 	@Column(name = "name", length = 100)
 	private String name;
@@ -41,14 +39,6 @@ public abstract class Person {
 
 	@Column(name = "dateOfBirth")
 	private Date dateOfBirth;
-
-	@OneToMany(fetch = FetchType.EAGER)
-	private Address address;
-	
-	
-	@OneToMany(fetch = FetchType.EAGER)
-	private Phone phone;
-	
 	
 	@Column(name = "login")
 	private String login;
@@ -94,22 +84,6 @@ public abstract class Person {
 		this.dateOfBirth = dateOfBirth;
 	}
 	
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-	public Phone getPhone() {
-		return phone;
-	}
-
-	public void setPhone(Phone phone) {
-		this.phone = phone;
-	}
-
 	public String getLogin() {
 		return login;
 	}
@@ -133,15 +107,5 @@ public abstract class Person {
 	public void setEnable(boolean enable) {
 		this.enable = enable;
 	}
-
-	public BlackList getBlackList() {
-		return blackList;
-	}
-
-	public void setBlackList(BlackList blackList) {
-		this.blackList = blackList;
-	}
-	
-	
 
 }

@@ -15,8 +15,8 @@
   <mapping class="br.com.fabricio.model.Address"/>
   <mapping class="br.com.fabricio.model.BlackList"/>
   <mapping class="br.com.fabricio.model.Person"/>
-  <!--  <mapping class="br.com.fabricio.model.PersonLegal"/>
-  <mapping class="br.com.fabricio.model.PersonPhysical"/> -->
+  <mapping class="br.com.fabricio.model.PersonLegal"/>
+  <mapping class="br.com.fabricio.model.PersonPhysical"/> 
   <mapping class="br.com.fabricio.model.Phone"/>
   <mapping class="br.com.fabricio.model.Vacancy"/>
 
