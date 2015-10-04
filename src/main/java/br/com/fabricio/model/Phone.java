@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Phone {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idPhone", unique = true, nullable = false)
 	private Integer idPhone;
 

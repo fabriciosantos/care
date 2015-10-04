@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class BlackList {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idBlakList", unique = true, nullable = false)
 	private Integer idBlackList;
 

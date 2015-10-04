@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class PersonPhysical extends Person {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idPersonPhysical", unique = true, nullable = false)
 	private int idPersonPhysical;
 	
@@ -39,4 +39,5 @@ public class PersonPhysical extends Person {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
+
 }

@@ -4,30 +4,21 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Target;
 
-
-@SuppressWarnings("unused")
 @Entity
 @Table(name = "person", catalog = "care")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Person {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Person {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idPerson", unique = true, nullable = false)
 	private Integer id;
 	

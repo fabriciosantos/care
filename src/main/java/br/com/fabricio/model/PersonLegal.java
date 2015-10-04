@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class PersonLegal extends Person {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idPersonLegal", unique = true, nullable = false)
 	private int idPersonLegal;
 
@@ -39,4 +39,6 @@ public class PersonLegal extends Person {
 	public void setIe(String ie) {
 		this.ie = ie;
 	}
+
+	
 }
