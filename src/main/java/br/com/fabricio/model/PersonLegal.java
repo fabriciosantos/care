@@ -2,28 +2,24 @@ package br.com.fabricio.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "personLegal", catalog = "care")
+@Table(name = "person_legal", catalog = "care")
 @PrimaryKeyJoinColumn(name = "id_Person")
 public class PersonLegal extends Person {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idPersonLegal", unique = true, nullable = false)
-	private int idPersonLegal;
 
 	@Column(name = "cnpj")
 	private String cnpj;
 
-	@Column(name = "inscricaoEstadual")
+	@Column(name = "inscricao_estadual")
 	private String ie;
-	
+
+	@Column(name = "inscricao_municipal")
+	private String im;
+
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -40,5 +36,12 @@ public class PersonLegal extends Person {
 		this.ie = ie;
 	}
 
-	
+	public String getIm() {
+		return im;
+	}
+
+	public void setIm(String im) {
+		this.im = im;
+	}
+		
 }

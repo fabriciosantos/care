@@ -1,5 +1,6 @@
 package br.com.fabricio.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,7 +16,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "person", catalog = "care")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Person {
+public class Person implements Serializable{
+
+	private static final long serialVersionUID = -4907453959655547665L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +31,6 @@ public class Person {
 	@Column(name = "email", length = 50)
 	private String email;
 
-	@Column(name = "dateOfBirth")
-	private Date dateOfBirth;
-	
 	@Column(name = "login")
 	private String login;
 
@@ -42,6 +42,19 @@ public class Person {
 	
 	public Person() {
 	}
+	
+	
+
+	public Person(String name, String email, String login, String password,
+			boolean enable) {
+		this.name = name;
+		this.email = email;
+		this.login = login;
+		this.password = password;
+		this.enable = enable;
+	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -67,14 +80,6 @@ public class Person {
 		this.email = email;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-	
 	public String getLogin() {
 		return login;
 	}

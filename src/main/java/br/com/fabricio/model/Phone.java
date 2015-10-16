@@ -1,5 +1,7 @@
 package br.com.fabricio.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "phone", catalog = "care")
-public class Phone {
+public class Phone implements Serializable{
+
+	private static final long serialVersionUID = 1985058333591122464L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
