@@ -13,11 +13,10 @@ public class test {
 	private static DefaultPersonDAO personDao;
 	
 	public static void main(String[] args) throws Exception {
-		 
+		 personDao = new DefaultPersonDAO();
 	
 		try {
-			
-			
+						
 			Person p = new Person();
 			p.setName("fabricio");
 			p.setEmail("email");
@@ -25,15 +24,12 @@ public class test {
 			p.setLogin("login");
 			p.setPassword("password");
 			
-			/*EntityManager entityManager = new JPAUtil().getEntityManager();
-			entityManager.getTransaction().begin();
-			entityManager.persist(p);
-			entityManager.getTransaction().commit();
-			entityManager.close();*/
-			
 			personDao.create(p);
-			Person person = personDAO.find(p.getId());
-			System.out.println(person.getName());
+			//Person person = personDAO.find(p.getId());
+			p.setName("null");
+			personDao.update(p);
+			personDao.delete(p.getId());
+			//System.out.println(person.getName());
 			
 			
 		}catch (Exception e) {
